@@ -3,3 +3,7 @@
 .env
 .idea/
 __pycache__/
+.idea/misc.xml
+ .idea/workspace.xml
+ .venv/
+ .cache.sqlite

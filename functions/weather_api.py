@@ -6,7 +6,7 @@ from retry_requests import retry
 
 
 @tool
-def get_weather(unit_of_speed: str) -> pd.DataFrame:
+def get_weather() -> pd.DataFrame:
 	"""
 	A function that gets the weather forecast for the next 24 hours in Hayling Island sailing club channel.
 	Wind speed unit is knots
@@ -15,7 +15,6 @@ def get_weather(unit_of_speed: str) -> pd.DataFrame:
 	cache_session = requests_cache.CachedSession(cache_name='.cache', expire_after = 3600)
 	retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
 	openmeteo = openmeteo_requests.Client(session = retry_session)
-
 
 	url = "https://api.open-meteo.com/v1/forecast"
 	params = {

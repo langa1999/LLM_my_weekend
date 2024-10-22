@@ -1,6 +1,8 @@
 from nredarwin.webservice import DarwinLdbSession
 from langchain_core.tools import tool
 
+from auth import get_railway_api_key
+
 
 @tool
 def get_departures_board():
@@ -8,8 +10,8 @@ def get_departures_board():
     A function that gets the train station boards and returns a string with all the next departures
     :return: str
     """
-    key = "c86cbf98-e734-46ff-9308-b0068087e0ac"
-    darwin_session = DarwinLdbSession(wsdl="https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx", api_key=key)
+    api_key = get_railway_api_key()
+    darwin_session = DarwinLdbSession(wsdl="https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx", api_key=api_key)
 
     departure_stations = ['WAT', 'VIC', 'LBG']
     result = ''
